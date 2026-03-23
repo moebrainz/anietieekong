@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState, useCallback } from "react";
+import Image from "next/image";
 import { Project } from "@/lib/services";
 import { svgMap } from "@/lib/svgs";
 
@@ -52,7 +53,12 @@ export function ProjectModal({ project, serviceTitle, onClose }: Props) {
   if (!project) return null;
 
   const SvgComp = svgMap[project.svgKey];
-  const currentImage = project.images[activeImg];
+  
+  // Guard against stale activeImg state from a previously opened project Modal.
+  const safeActiveImg = activeImg < project.images.length ? activeImg : 0;
+  const currentImage = project.images[safeActiveImg];
+
+  if (!currentImage) return null;
 
   return (
     <>
@@ -126,11 +132,13 @@ export function ProjectModal({ project, serviceTitle, onClose }: Props) {
                   />
                 ) : (
                   /* eslint-disable-next-line @next/next/no-img-element */
-                  <img
+                  <Image
                     key={currentImage.url}
                     src={currentImage.url}
                     alt={currentImage.caption}
-                    className={`absolute inset-0 w-full h-full object-cover z-10 transition-opacity duration-700 ${imgLoaded ? "opacity-100" : "opacity-0"}`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className={`object-cover z-10 transition-opacity duration-700 ${imgLoaded ? "opacity-100" : "opacity-0"}`}
                     onLoad={() => setImgLoaded(true)}
                     onError={() => setImgLoaded(true)}
                   />
@@ -191,10 +199,12 @@ export function ProjectModal({ project, serviceTitle, onClose }: Props) {
                       />
                     ) : (
                       /* eslint-disable-next-line @next/next/no-img-element */
-                      <img
+                      <Image
                         src={img.url}
                         alt={img.caption}
-                        className="w-full h-full object-cover"
+                        fill
+                        sizes="100px"
+                        className="object-cover"
                       />
                     )}
                     {/* Active indicator */}
