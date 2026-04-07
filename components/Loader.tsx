@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export function Loader() {
   const [pct, setPct]  = useState(0);
@@ -27,9 +28,12 @@ export function Loader() {
         pct >= 100 ? "opacity-0" : "opacity-100"
       }`}
     >
-      <p className="font-cormorant text-[clamp(1.4rem,3vw,2.2rem)] font-light tracking-[.2em] text-[#f2f0ec]">
-        Anietie <span className="text-accent">Ekong</span>
-      </p>
+      <div className="flex items-center gap-4">
+        <Image src="/anietie-logo-bg.png" alt="Anietie Ekong Logo" width={48} height={48} className="object-contain" priority />
+        <p className="font-cormorant text-[clamp(1.4rem,3vw,2.2rem)] font-light tracking-[.2em] text-[#f2f0ec]">
+          Anietie <span className="text-accent">Ekong</span>
+        </p>
+      </div>
       <div className="w-48 h-px bg-white/10 relative overflow-hidden">
         <div
           className="absolute top-0 left-0 h-full bg-accent transition-none"
