@@ -321,12 +321,12 @@ export default function HomePage() {
       {/* ── FOOTER ── */}
       <footer className="border-t border-white/[.07] px-8 md:px-14 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
         <p className="font-mono text-[.54rem] tracking-[.2em] uppercase text-dust/50">
-          Anietie Ekong Studio © 2009–2026
+          Anietecture © 2026
         </p>
         <p className="font-cormorant text-[.95rem] font-light tracking-[.1em] text-stone/50">
-          Architecture & Design Studio
+          Anietecture
           <span className="mx-3 text-dust/30">·</span>
-          Lagos · Abuja · London
+          Lagos 
         </p>
         <div className="flex gap-6">
           {[
@@ -340,7 +340,7 @@ export default function HomePage() {
               href={s.url} 
               target={s.url !== "#" ? "_blank" : undefined}
               rel={s.url !== "#" ? "noopener noreferrer" : undefined}
-              className="font-mono text-[.52rem] tracking-[.2em] uppercase text-dust/40 hover:text-accent transition-colors"
+              className="font-mono text-[.72rem] tracking-[.2em] uppercase text-dust/40 hover:text-accent text-stone/50 "
             >
               {s.name}
             </a>

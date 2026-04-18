@@ -42,7 +42,7 @@ export function Loader() {
       </div>
       <p className="font-mono text-[.6rem] tracking-[.38em] text-dust">{pct}%</p>
       <p className="absolute bottom-8 font-mono text-[.52rem] tracking-[.5em] uppercase text-white/15">
-        Architecture & Design Studio
+        Anietecture
       </p>
     </div>
   );
